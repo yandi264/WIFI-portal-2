@@ -1,134 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>WiFi Gratis</title>
-    <style>
-        /* Fondo temático con imagen LEGIÓN */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background: url('https://i.ibb.co/your-image-url/legion-bg.png') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            position: relative;
-        }
+<meta charset="UTF-8">
+<title>WiFi Gratis</title>
+<style>
+    /* Fondo temático */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url('https://i.ibb.co/xj0yZkP/fondo-wifi-tecnologia.png') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
 
-        /* Overlay oscuro para mejorar legibilidad */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
+    /* Caja del portal */
+    .box {
+        background: rgba(0,0,0,0.7); /* Caja semi-transparente */
+        padding: 40px;
+        border-radius: 15px;
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
 
-        /* Caja del portal */
-        .box {
-            background: rgba(0,0,0,0.7);
-            padding: 40px;
-            border-radius: 15px;
-            width: 350px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 2;
-        }
+    /* Logo */
+    .box img {
+        width: 150px;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
 
-        /* Logo */
-        .box img {
-            width: 150px;
-            display: block;
-            margin: 0 auto 20px auto;
-        }
+    /* Inputs del formulario */
+    input {
+        padding: 10px;
+        margin-bottom: 15px;
+        width: 95%;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+    input:focus {
+        border-color: #4facfe;
+        outline: none;
+        box-shadow: 0 0 5px rgba(79,172,254,0.7);
+    }
 
-        /* Inputs del formulario */
-        input {
-            padding: 10px;
-            margin-bottom: 15px;
-            width: 95%;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-        input:focus {
-            border-color: #4facfe;
-            outline: none;
-            box-shadow: 0 0 5px rgba(79,172,254,0.7);
-        }
+    /* Botón */
+    button {
+        background: #4facfe;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-        /* Botón */
-        button {
-            background: #4facfe;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    /* Banner */
+    .banner img {
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
 
-        /* Banner */
-        .banner img {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-    </style>
+</style>
 </head>
 <body>
 
-    <div class="box">
-        <!-- Logo -->
-        <img src="https://tusitio.com/logo.png" alt="Logo">
+<div class="box">
+    <!-- Logo -->
+    <img src="https://tusitio.com/logo.png" alt="Logo">
 
-        <h2>¡Bienvenido a WiFi Gratis!</h2>
-        <p>Completa el formulario y espera 5 segundos para conectarte</p>
+    <h2>¡Bienvenido a WiFi Gratis!</h2>
+    <p>Completa el formulario y espera 5 segundos para conectarte</p>
 
-        <!-- Formulario -->
-        <form id="formulario" onsubmit="enviarFormulario(event)">
-            <input type="text" placeholder="Tu nombre" required><br>
-            <input type="email" placeholder="Tu email" required><br>
-            <button id="btnContinuar" type="submit" disabled>Aceptar y continuar (5)</button>
-        </form>
+    <!-- Formulario -->
+    <form id="formulario" onsubmit="enviarFormulario(event)">
+        <input type="text" placeholder="Tu nombre" required><br>
+        <input type="email" placeholder="Tu email" required><br>
+        <button id="btnContinuar" type="submit" disabled>Aceptar y continuar (5)</button>
+    </form>
 
-        <!-- Banner de publicidad -->
-        <div class="banner">
-            <a href="https://tusitio.com" target="_blank">
-                <img src="https://tusitio.com/banner.png" alt="Publicidad">
-            </a>
-        </div>
+    <!-- Banner de publicidad -->
+    <div class="banner">
+        <a href="https://tusitio.com" target="_blank">
+            <img src="https://tusitio.com/banner.png" alt="Publicidad">
+        </a>
     </div>
+</div>
 
-    <script>
-        // Temporizador de 5 segundos
-        let tiempo = 5;
-        let btn = document.getElementById('btnContinuar');
+<script>
+    // Temporizador de 5 segundos
+    let tiempo = 5;
+    let btn = document.getElementById('btnContinuar');
 
-        let countdown = setInterval(() => {
-            tiempo--;
-            btn.innerText = `Aceptar y continuar (${tiempo})`;
-            if (tiempo <= 0) {
-                clearInterval(countdown);
-                btn.innerText = 'Aceptar y continuar';
-                btn.disabled = false;
-            }
-        }, 1000);
-
-        // Función para enviar formulario y redirigir
-        function enviarFormulario(e) {
-            e.preventDefault();
-            alert("¡Gracias! Serás redirigido a internet.");
-            window.location.href = "http://google.com"; // Cambia por la URL final de tu WiFi
+    let countdown = setInterval(() => {
+        tiempo--;
+        btn.innerText = `Aceptar y continuar (${tiempo})`;
+        if (tiempo <= 0) {
+            clearInterval(countdown);
+            btn.innerText = 'Aceptar y continuar';
+            btn.disabled = false;
         }
-    </script>
+    }, 1000);
+
+    // Función para enviar formulario y redirigir
+    function enviarFormulario(e) {
+        e.preventDefault();
+        alert("¡Gracias! Serás redirigido a internet.");
+        window.location.href = "http://google.com"; // Cambia por la URL final de tu WiFi
+    }
+</script>
 
 </body>
 </html>
